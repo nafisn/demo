@@ -45,15 +45,15 @@ public class DemoService {
                 .example(demoRequest.getExample())
                 .build();
         return DemoResponse.builder()
-                .definition(this.demoRepository.save(newWord))
+                .definition(demoRepository.save(newWord))
                 .build();
     }
 
     public Definition getNewDefinition(String word) throws DemoException {
-        Definition definition= this.demoRepository.findByWord(word);
+        Definition definition= demoRepository.findByWord(word);
         if (definition == null) {
             throw new DemoException("Word does not exist yet.");
         }
-        return this.demoRepository.findByWord(word);
+        return demoRepository.findByWord(word);
     }
 }
