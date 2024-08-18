@@ -13,7 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
+import java.util.Optional;
+
 
 @Service
 @Slf4j
@@ -54,6 +55,10 @@ public class DemoService {
         if (definition == null) {
             throw new DemoException("Word does not exist yet.");
         }
-        return demoRepository.findByWord(word);
+        return definition;
+    }
+
+    public Optional<Definition> getDefinitionById(Long id) {
+        return demoRepository.findById(id);
     }
 }
